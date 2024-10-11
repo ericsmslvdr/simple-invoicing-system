@@ -1,7 +1,9 @@
-<x-guest-layout title="Login">
+<x-guest-layout>
+    <x-slot name="title">Login</x-slot>
 
-    <form action="{{ route('login') }}" method="POST"
-        class="w-96 m-auto px-8 py-6 border-2 border-gray-500">
+    <h1 class="text-2xl font-bold text-gray-700">{{ config('app.name') }}</h1>
+
+    <form action="{{ route('login') }}" method="POST" class="w-96 px-8 py-6 border-2 border-gray-500">
         @csrf
 
         <span class="text-2xl font-medium text-gray-700">Login</span>

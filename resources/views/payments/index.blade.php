@@ -1,4 +1,5 @@
 <x-app-layout title="Payments">
+    <x-slot name="title">Payments</x-slot>
     <x-slot name="header">Payments</x-slot>
 
     <x-slot name="content">

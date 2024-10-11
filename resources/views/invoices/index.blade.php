@@ -1,4 +1,5 @@
 <x-app-layout title="Invoices">
+    <x-slot name="title">Invoices</x-slot>
     <x-slot name="header">Invoices</x-slot>
 
     <x-slot name="content">

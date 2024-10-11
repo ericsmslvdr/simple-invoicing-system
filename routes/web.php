@@ -14,10 +14,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resources([
-        'customer' => CustomerController::class,
-        'invoice' => InvoiceController::class,
+        'customers' => CustomerController::class,
+        'invoices' => InvoiceController::class,
         'invoice-line-items' => InvoiceLineItemController::class,
-        'payment' => PaymentController::class
+        'payments' => PaymentController::class
     ]);
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
