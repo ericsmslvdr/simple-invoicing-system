@@ -1,0 +1,41 @@
+Customers table
+id
+name
+phone_number
+email
+created_by (User table id)
+created_at
+updated_at
+
+Invoices table
+id
+invoice_number
+created_for (Customer table id)
+created_by (User table id)
+invoice_date
+discount
+vat
+grand_price
+status (enum open, paid)
+created_at
+updated_at
+
+Invoice Line Items table
+id
+invoice_id (Invoice table id)
+type (enum product, service)
+quantity
+base_price
+subtotal
+
+Payments
+id
+invoice_id (Invoice table id)
+payment_record_number
+or_number
+payment_date
+amount_paid
+type (enum credit card, cash, check, direct debit, bank transfer)
+
+
+PDF Generator CraftMyPdf

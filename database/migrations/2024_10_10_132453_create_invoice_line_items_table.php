@@ -1,11 +1,11 @@
 <?php
 
+use App\Models\Invoice;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('invoice_line_items', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(Invoice::class, 'invoice_id')
+                ->constrained('invoices');
+            $table->enum('type', ['PRODUCT', 'SERVICE']);
+            $table->integer('quantity');
+            $table->decimal('base_price');
+            $table->decimal('subtotal');
             $table->timestamps();
         });
     }
