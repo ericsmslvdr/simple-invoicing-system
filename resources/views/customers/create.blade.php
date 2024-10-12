@@ -4,7 +4,9 @@
 
     {{-- SLOT --}}
     <div class="h-full w-full space-y-8">
-        <x-back-button />
+        <div class="w-full flex">
+            <x-back-button />
+        </div>
 
         {{-- CREATE CUSTOMER FORM --}}
         <div class="border-2 border-gray-500 w-96 mx-auto p-8">

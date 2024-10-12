@@ -6,16 +6,18 @@
     <div class="h-full w-full space-y-8">
 
         {{-- ADD NEW CUSTOMER BUTTON --}}
-        <a href="{{ route('customers.create') }}">
-            <x-button class="ml-auto flex gap-4 items-center group">
-                Add New Customer
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                    class="fill-black group-hover:fill-white transition-all duration-150 ease-in-out">
-                    <path
-                        d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160ZM120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z" />
-                </svg>
-            </x-button>
-        </a>
+        <div class="w-full flex justify-end">
+            <a href="{{ route('customers.create') }}">
+                <x-button class="flex gap-4 items-center group">
+                    Add New Customer
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        class="fill-black group-hover:fill-white transition-all duration-150 ease-in-out">
+                        <path
+                            d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160ZM120-120v-720h720v720H120Zm80-80h560v-560H200v560Zm0 0v-560 560Z" />
+                    </svg>
+                </x-button>
+            </a>
+        </div>
 
         {{-- LIST OF ALL CUSTOMERS --}}
         <table class="w-full">
@@ -34,7 +36,11 @@
                             <td class="px-6 py-4">{{ $customer->name }}</td>
                             <td class="px-6 py-4">{{ $customer->phone_number }}</td>
                             <td class="px-6 py-4">{{ $customer->email }}</td>
-                            <td class="px-6 py-4">Actions</td>
+                            <td class="px-6 py-4">
+                                <x-button>Edit</x-button>
+                                <x-button>Create Invoice</x-button>
+                                <x-button variant="destroy">Delete</x-button>
+                            </td>
                         </tr>
                     @endforeach
                 @else
