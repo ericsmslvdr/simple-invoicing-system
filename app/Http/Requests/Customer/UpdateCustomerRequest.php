@@ -5,7 +5,7 @@ namespace App\Http\Requests\Customer;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StoreCustomerRequest extends FormRequest
+class UpdateCustomerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class StoreCustomerRequest extends FormRequest
         return [
             'name' => 'required|string|min:3|max:255',
             'phone_number' => 'required|string|size:11',
-            'email' => 'required|email|unique:customers,email'
+            'email' => 'required|email|unique:customers,email,' . $this->customer->id
         ];
     }
 }
