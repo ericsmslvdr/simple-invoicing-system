@@ -1,6 +1,4 @@
-<x-app-layout title="Add New Customer">
-    <x-slot name="title">Add New Customer</x-slot>
-    <x-slot name="header">Add New Customer</x-slot>
+<x-app-layout title="Edit Customer" header="Edit customer - <strong>{{ $customer->name }}</strong>">
 
     {{-- SLOT --}}
     <div class="h-full w-full space-y-8">

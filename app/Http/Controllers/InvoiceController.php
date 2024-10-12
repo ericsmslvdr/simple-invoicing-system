@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
 
@@ -18,9 +19,11 @@ class InvoiceController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Customer $customer = null)
     {
-        return view('invoices.create');
+        $existingCustomers = Customer::all();
+
+        return view('invoices.create', compact(['customer', 'existingCustomers']));
     }
 
     /**

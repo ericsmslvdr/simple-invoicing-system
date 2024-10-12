@@ -20,6 +20,12 @@ Route::middleware('auth')->group(function () {
         'payments' => PaymentController::class
     ]);
 
+    /**
+     * If the user will create an invoice from the invoice page, it'll use the create from resources,
+     * If from the customer table, it will use this instead
+     */
+    Route::get('/customers/{customer}/invoices/create', [InvoiceController::class, 'create'])->name('customers.invoices.create');
+
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 

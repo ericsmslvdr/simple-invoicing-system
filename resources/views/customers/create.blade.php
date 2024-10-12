@@ -1,6 +1,4 @@
-<x-app-layout title="Add New Customer">
-    <x-slot name="title">Add New Customer</x-slot>
-    <x-slot name="header">Add New Customer</x-slot>
+<x-app-layout title="Add New Customer" header="Add New Customer">
 
     {{-- SLOT --}}
     <div class="h-full w-full space-y-8">

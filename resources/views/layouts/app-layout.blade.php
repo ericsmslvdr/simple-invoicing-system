@@ -1,4 +1,6 @@
-<x-head :title="$title" />
+@props(['title', 'header'])
+
+<x-head title="{{ $title }}" />
 
 <body class="font-roboto h-dvh">
     <div class="flex size-full">
@@ -54,7 +56,8 @@
         <div class="size-full flex flex-col">
             <header class="border-2 border-b-gray-400 shadow w-full h-auto p-4">
                 <div class="container mx-auto">
-                    <h1 class="text-2xl font-medium">{{ $header }}</h1>
+
+                    <h1 class="text-2xl font-medium">{!! $header !!}</h1>{{-- To render the strong tag passed from props --}}
                 </div>
             </header>
 

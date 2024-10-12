@@ -1,6 +1,4 @@
-<x-app-layout title="Customers">
-    <x-slot name="title">Customers</x-slot>
-    <x-slot name="header">Customers</x-slot>
+<x-app-layout title="Customers" header="Customers">
 
     {{-- SLOT --}}
     <div class="h-full w-full space-y-8">
@@ -45,7 +43,9 @@
                                 <a href="{{ route('customers.edit', $customer->id) }}">
                                     <x-button>Edit</x-button>
                                 </a>
-                                <x-button>Create Invoice</x-button>
+                                <a href="{{ route('customers.invoices.create', $customer->id) }}">
+                                    <x-button>Create Invoice</x-button>
+                                </a>
                                 <x-button form="delete-customer-{{ $customer->id }}" variant="destroy">Delete</x-button>
                             </td>
 

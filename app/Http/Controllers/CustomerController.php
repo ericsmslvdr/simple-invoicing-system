@@ -16,7 +16,7 @@ class CustomerController extends Controller
     {
         $customers = Customer::all()->sortByDesc('created_at');
 
-        return view('customers.index', ['customers' => $customers]);
+        return view('customers.index', compact('customers'));
     }
 
     /**
@@ -53,7 +53,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        return view('customers.edit', ['customer' => $customer]);
+        return view('customers.edit', compact('customer'));
     }
 
     /**

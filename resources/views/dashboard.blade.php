@@ -1,7 +1,5 @@
-<x-app-layout>
-    <x-slot name="title">Dashboard</x-slot>
-    <x-slot name="header">Dashboard</x-slot>
-
+<x-app-layout title="Dashboard" header="Dashboard">
+    
     {{-- ADmin should see all total, while users can only see entities that belongs to them --}}
     {{-- SLOT --}}
     <div class="h-32 grow border-2 border-gray-400 flex flex-col justify-between p-4">
