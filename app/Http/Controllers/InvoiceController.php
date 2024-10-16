@@ -21,9 +21,16 @@ class InvoiceController extends Controller
      */
     public function create(Customer $customer = null)
     {
+        /* logic to generate invoice number
+            - get the last invoice number or create one
+            - same day ? increment number : create new one starting with 001
+            - INV[current date][current month][current year] - [001] / INV14102024-001
+            - include this invoice number in the view
+        */
+
         $existingCustomers = Customer::all();
 
-        return view('invoices.create', compact(['customer', 'existingCustomers']));
+        return view('invoices.create', compact('customer', 'existingCustomers'));
     }
 
     /**
