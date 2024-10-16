@@ -13,25 +13,26 @@
 
         {{-- CREATE CUSTOMER FORM --}}
         <div class="mx-auto w-full border-2 border-gray-500 bg-white p-8">
-            <form action="{{ route('customers.store') }}" method="POST" class="mx-auto w-full space-y-4">
+            <form action="{{ route('invoices.store') }}" method="POST" class="mx-auto w-full space-y-4">
                 @csrf
 
                 <div class="flex gap-4">
                     <div class="space-y-2">
                         <x-label for="invoice_number">Invoice Number</x-label>
-                        <x-input name="invoice_number" id="invoice_number" placeholder="Invoice number" required
-                            :value="old('invoice_number')" />
+                        <x-input name="invoice_number" id="invoice_number" placeholder="Invoice number"
+                            class="focus:ring-0" readonly :value="old('invoice_number')" value="{{ $newInvoiceNumber }}" />
                     </div>
 
                     <div class="space-y-2">
                         <x-label for="invoice_date">Invoice Date</x-label>
                         <x-input type="date" name="invoice_date" id="invoice_date"
-                            placeholder="Enter customer phone number" required maxlength="11" :value="old('invoice_date')" />
+                            placeholder="Enter customer phone number" required maxlength="11" :value="old('invoice_date')"
+                            value="2024-10-16" />
                     </div>
 
                     <div class="flex flex-col space-y-2">
                         <x-label>Select existing customer: </x-label>
-                        <select name="created_for" id="created_for" class="h-10 w-fit cursor-pointer p-2">
+                        <select name="created_for" id="created_for" class="h-10 w-fit cursor-pointer p-2" required>
                             <option value="">Select customer</option>
                             @foreach ($existingCustomers as $xCustomer)
                                 <option value="{{ $xCustomer->id }}" @selected($selectedCustomerId === $xCustomer->id)>
@@ -59,13 +60,13 @@
                 <div class="w-fit space-y-2">
                     <x-label for="discount">Discount</x-label>
                     <x-input type="number" name="discount" id="discount" placeholder="Enter customer discount"
-                        required value="0" />
+                        value="0" required />
                 </div>
 
                 <div class="w-fit space-y-2">
                     <x-label for="vat">VAT</x-label>
-                    <x-input type="number" name="vat" id="vat" placeholder="Enter vat" required
-                        value="12" />
+                    <x-input type="number" name="vat" id="vat" placeholder="Enter vat" value="12"
+                        required />
                 </div>
 
                 <div class="w-fit space-y-2">
