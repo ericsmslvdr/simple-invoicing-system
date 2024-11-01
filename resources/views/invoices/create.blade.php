@@ -27,7 +27,7 @@
                         <x-label for="invoice_date">Invoice Date</x-label>
                         <x-input type="date" name="invoice_date" id="invoice_date"
                             placeholder="Enter customer phone number" required maxlength="11" :value="old('invoice_date')"
-                            value="2024-10-16" />
+                            value="{{ $currentDate }}" />
                     </div>
 
                     <div class="flex flex-col space-y-2">

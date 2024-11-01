@@ -31,18 +31,21 @@ class InvoiceController extends Controller
         */
         $lastInvoice = Invoice::latest()->first();
 
-        $currentDay = date("d");
-        $currentMonth = date("m");
-        $currentYear = date("Y");
-        $currentDate = "{$currentMonth}{$currentDay}{$currentYear}";
+        $currentDate = date("Y-m-d"); //2024-11-01
+        $splittedCurrentDate = explode('-', $currentDate); //['2024', '11', '01']
 
-        $newInvoiceNumber = "INV{$currentDate}-001";
+        $currentDay = $splittedCurrentDate[2];
+        $currentMonth = $splittedCurrentDate[1];
+        $currentYear = $splittedCurrentDate[0];
+        $formattedCurrentDate = "{$currentMonth}{$currentDay}{$currentYear}";
+
+        $newInvoiceNumber = "INV{$formattedCurrentDate}-001";
 
         $existingCustomers = Customer::all();
 
         /* If there are currently no data, start the invoice number with this */
         if (!$lastInvoice) {
-            return view('invoices.create', compact('customer', 'existingCustomers', 'newInvoiceNumber'));
+            return view('invoices.create', compact('customer', 'existingCustomers', 'newInvoiceNumber', 'currentDate'));
         }
 
         $lastInvoiceNumber = $lastInvoice->invoice_number; /* Sample = INV10162024-001 */
@@ -61,28 +64,19 @@ class InvoiceController extends Controller
         $lastMonth = substr($splittedDetails[0], 0, 2);
         $lastYear = substr($splittedDetails[0], 4, 4);
 
-        // dd([
-        //     'lastMonth' => $lastMonth,
-        //     'lastDAy' => $lastDay,
-        //     'lastYear' => $lastYear,
-        //     'currentMOnth' => $currentMonth,
-        //     'currentDay' => $currentDay,
-        //     'currentYear' => $currentYear
-        // ]);
-
         $lastSerialNumber = (int) $splittedDetails[1];
 
         $isSameDay = $lastDay === $currentDay && $lastMonth === $currentMonth && $lastYear === $currentYear;
 
         /* If not then return early along with the newInvoiceNumber */
         if (!$isSameDay) {
-            return view('invoices.create', compact('customer', 'existingCustomers', 'newInvoiceNumber'));
+            return view('invoices.create', compact('customer', 'existingCustomers', 'newInvoiceNumber', 'currentDate'));
         }
 
         $newSerialNumber = str_pad($lastSerialNumber + 1, 3, '0', STR_PAD_LEFT); /* built in php functions are amazing!! :> */
-        $newInvoiceNumber = "INV{$currentDate}-{$newSerialNumber}";
+        $newInvoiceNumber = "INV{$formattedCurrentDate}-{$newSerialNumber}";
 
-        return view('invoices.create', compact('customer', 'existingCustomers', 'newInvoiceNumber'));
+        return view('invoices.create', compact('customer', 'existingCustomers', 'newInvoiceNumber', 'currentDate'));
     }
 
     /**
